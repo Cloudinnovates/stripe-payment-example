@@ -18,5 +18,9 @@
   "/register": {
     "target": "http://localhost:3000",
     "secure": false
+  },
+  "/payment": {
+    "target": "http://localhost:3000",
+    "secure": false
   }
 }

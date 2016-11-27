@@ -1,6 +1,8 @@
 import * as express from 'express';
 import * as path from 'path';
 import * as stormpath from 'express-stormpath';
+import { handlePayment } from './api-routes/payment';
+import * as bodyParser from 'body-parser';
 
 const app = express();
 
@@ -23,6 +25,9 @@ app.use(function (req, res, next) {
   console.log(new Date, req.method, req.url);
   next();
 });
+
+// parse application/json
+app.use(bodyParser.json());
 
 /**
  * Now we initialize Stormpath, any middleware that is registered after this
@@ -51,6 +56,11 @@ app.use(stormpath.init(app, {
     }
   }
 }));
+
+/**
+ * Handle payments via stripe
+ */
+app.post('/payment', handlePayment);
 
 /**
  * Now that our static file server and Stormpath are configured, we let Express

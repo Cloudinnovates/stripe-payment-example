@@ -5,10 +5,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { StormpathModule } from 'angular-stormpath';
+import { StripeComponent } from './stripe/stripe.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    StripeComponent
   ],
   imports: [
     BrowserModule,
